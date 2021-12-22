@@ -1,0 +1,20 @@
+spring.cloud.stream:
+  poller:
+    fixedDelay: 2000
+  function:
+    definition: moviereview
+  bindings:
+    moviereview-out-0:
+      destination: score
+  kafka:
+    streams:
+      binder:
+        applicationId: Producer
+        serdeError: logAndContinue        
+        configuration:         
+          commit:
+            interval:
+              ms: 1000             
+spring.application.name: ScoreStreamKafka-producer
+logging:  level:
+    '[org.apache.kafka]': INFO

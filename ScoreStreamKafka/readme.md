@@ -1,0 +1,1 @@
+docker exec -it broker /bin/kafka-topics --create --topic score --partitions 1 --replication-factor 1 --zookeeper zookeeper:2181

@@ -1,0 +1,20 @@
+spring.cloud.stream:
+  poller:
+    fixedDelay: 2000
+  function:
+    definition: avgscore  
+  bindings:
+    avgscore-in-0:
+      destination: score
+  kafka:
+    streams:
+      binder:
+        applicationId: Consumer        
+        serdeError: logAndContinue
+        configuration:
+          commit:
+            interval:
+              ms: 1000
+spring.application.name: ScoreStreamKafka-consumer
+logging:  level:
+    '[org.apache.kafka]': INFO
